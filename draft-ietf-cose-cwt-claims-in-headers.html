@@ -10,25 +10,25 @@
 <meta content="
        This document describes how to include CBOR Web Token (CWT) claims in the header parameters of any COSE structure. This functionality helps to facilitate applications that wish to make use of CBOR Web Token (CWT) claims in encrypted COSE structures and/or COSE structures featuring detached signatures, while having some of those claims be available before decryption and/or without inspecting the detached payload. 
     " name="description">
-<meta content="xml2rfc 3.17.4" name="generator">
+<meta content="xml2rfc 3.18.2" name="generator">
 <meta content="COSE" name="keyword">
 <meta content="JOSE" name="keyword">
 <meta content="draft-ietf-cose-cwt-claims-in-headers-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.17.4
-    Python 3.11.4
+  xml2rfc 3.18.2
+    Python 3.11.6
     ConfigArgParse 1.5.3
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
-    lxml 4.9.2
-    platformdirs 3.8.0
+    lxml 4.9.3
+    platformdirs 3.11.0
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.31.0
     setuptools 67.7.2
     six 1.16.0
-    wcwidth 0.2.6
+    wcwidth 0.2.8
 -->
 <link href="draft-ietf-cose-cwt-claims-in-headers.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -651,7 +651,7 @@ sub, sup {
 }
 #toc nav li {
   line-height: 1.3em;
-  margin: 0.75em 0;
+  margin: 2px 0;
   padding-left: 1.2em;
   text-indent: -1.2em;
 }
@@ -744,7 +744,7 @@ hr.addr {
     z-index: 2;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 1px 0 0 0;
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
@@ -868,16 +868,13 @@ hr.addr {
     border-top: none;
     padding-top: 0;
   }
-  figure, pre {
+  figure, pre, .vcard {
     page-break-inside: avoid;
-  }
-  figure {
-    overflow: scroll;
   }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
-  h2+*, h3+*, h4+*, h5+*, h6+* {
+  :is(h2, h3, h4, h5, h6)+*, dd {
     page-break-before: avoid;
   }
   pre {
@@ -890,6 +887,9 @@ hr.addr {
   }
   td {
     border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
   }
 }
 
@@ -991,28 +991,6 @@ address div.right {
   text-align: right;
 }
 
-/* Give the table caption label the same styling as the figcaption */
-
-@media print {
-  .toplink {
-    display: none;
-  }
-
-  /* avoid overwriting the top border line with the ToC header */
-  #toc {
-    padding-top: 1px;
-  }
-
-  /* Avoid page breaks inside dl and author address entries */
-  dd {
-    page-break-before: avoid;
-  }
-  .vcard {
-    page-break-inside: avoid;
-  }
-
-}
-
 /* Dark mode. */
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1049,11 +1027,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CBOR Web Token (CWT) Claims in COSE Head</td>
-<td class="right">July 2023</td>
+<td class="right">October 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Looker &amp; Jones</td>
-<td class="center">Expires 9 January 2024</td>
+<td class="center">Expires 25 April 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-cose-cwt-claims-in-headers-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-07-08" class="published">8 July 2023</time>
+<time datetime="2023-10-23" class="published">23 October 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-01-09">9 January 2024</time></dd>
+<dd class="expires"><time datetime="2024-04-25">25 April 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1080,7 +1058,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </div>
 <div class="author">
       <div class="author-name">M. Jones</div>
-<div class="org">independent</div>
+<div class="org">Self-Issued Consulting</div>
 </div>
 </dd>
 </dl>
@@ -1117,7 +1095,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 January 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1191,7 +1169,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">In some applications of COSE, it is useful to have a standard representation of CWT claims <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span> available in the header parameters. These include encrypted COSE structures, which may or may not be an encrypted CWT and/or those featuring a detached signature.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">Section 5.3 of the JWT RFC <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> defined a similar mechanism for expressing selected JWT based claims as JOSE header parameters.  This JWT feature was motivated by the desire to have certain claims, such as the Issuer value, be visible to software processing the JWT, even though the JWT is encrypted.  No corresponding feature was standardized for CWTs, which was an omission that this specification corrects.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-2">Section 5.3 of JSON Web Token (JWT) <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> defined a similar mechanism for expressing selected JWT based claims as JOSE header parameters.  This JWT feature was motivated by the desire to have certain claims, such as the Issuer value, be visible to software processing the JWT, even though the JWT is encrypted.  No corresponding feature was standardized for CWTs, which was an omission that this specification corrects.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">Directly including CWT claim values as COSE header parameter values would not work, since there are conflicts between the numeric header parameter assignments and the numeric CWT claim assignments.  Instead, this specification defines a single header parameter registered in the IANA "COSE Header Parameters" registry that creates a location to store CWT claims in a COSE header parameter.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <div id="requirements-terminology">
 <section id="section-1.1">
@@ -1223,12 +1201,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <tbody>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">CWT Claims</td>
-            <td class="text-left" rowspan="1" colspan="1">TBD (requested assignment 13)</td>
+            <td class="text-left" rowspan="1" colspan="1">TBD (requested assignment 15)</td>
             <td class="text-left" rowspan="1" colspan="1">map</td>
             <td class="text-left" rowspan="1" colspan="1">
               <span>[<a href="#IANA.COSE" class="cite xref">IANA.COSE</a>]</span>
 </td>
-            <td class="text-left" rowspan="1" colspan="1">location for CWT Claims in COSE Header Parameters</td>
+            <td class="text-left" rowspan="1" colspan="1">Location for CWT Claims in COSE Header Parameters</td>
           </tr>
         </tbody>
       </table>
@@ -1251,7 +1229,7 @@ Claim-Label = int / text
       <h2 id="name-privacy-considerations">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
       </h2>
-<p id="section-3-1">Some of the registered CWT claims may contain privacy-sensitive information. Therefore care must be taken when expressing CWT claims in COSE headers.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">Some of the registered CWT claims may contain privacy-sensitive information. Since CWT claims in COSE headers are not encrypted, when privacy-sensitive information is present in these claims, applications and protocols using them should ensure that these COSE objects are only made visible to parties for which it is appropriate for them to have access to this sensitive information.<a href="#section-3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
@@ -1260,6 +1238,8 @@ Claim-Label = int / text
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-4-1">Implementers should also review the security considerations for CWT, which are documented in Section 8 of <span>[<a href="#RFC8392" class="cite xref">RFC8392</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">As described in <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, if the COSE payload is transported separately ("detached content"), then it is the responsibility of the application to ensure that it will be transported without changes.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">The reason for applications to verify that CWT claims that are present both in the payload and the header of a CWT are identical, unless it defines other specific processing rules for these claims, is to eliminate potential confusion that might arise by having different values for the same claim, which could result in inconsistent processing of such claims.<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1276,8 +1256,20 @@ Claim-Label = int / text
       </h2>
 <dl class="references">
 <dt id="IANA.COSE">[IANA.COSE]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"COSE Header Parameters"</span>, <span>&lt;<a href="https://www.iana.org/assignments/cose/cose.xhtml#header-parameters">https://www.iana.org/assignments/cose/cose.xhtml#header-parameters</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2119">[RFC2119]</dt>
+      <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+      <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8392">[RFC8392]</dt>
+    <dd>
+<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Wahlstroem, E.</span>, <span class="refAuthor">Erdtman, S.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"CBOR Web Token (CWT)"</span>, <span class="seriesInfo">RFC 8392</span>, <span class="seriesInfo">DOI 10.17487/RFC8392</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8392">https://www.rfc-editor.org/info/rfc8392</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1286,25 +1278,17 @@ Claim-Label = int / text
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
       </h2>
 <dl class="references">
-<dt id="RFC2119">[RFC2119]</dt>
-      <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC7519">[RFC7519]</dt>
       <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7519">https://www.rfc-editor.org/info/rfc7519</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8174">[RFC8174]</dt>
-      <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8392">[RFC8392]</dt>
-      <dd>
-<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Wahlstroem, E.</span>, <span class="refAuthor">Erdtman, S.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"CBOR Web Token (CWT)"</span>, <span class="seriesInfo">RFC 8392</span>, <span class="seriesInfo">DOI 10.17487/RFC8392</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8392">https://www.rfc-editor.org/info/rfc8392</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8610">[RFC8610]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8610">https://www.rfc-editor.org/info/rfc8610</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9052">[RFC9052]</dt>
+    <dd>
+<span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE): Structures and Process"</span>, <span class="seriesInfo">STD 96</span>, <span class="seriesInfo">RFC 9052</span>, <span class="seriesInfo">DOI 10.17487/RFC9052</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9052">https://www.rfc-editor.org/info/rfc9052</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1315,11 +1299,15 @@ Claim-Label = int / text
       </h2>
 <p id="appendix-A-1">We would like to thank
 Daisuke Ajitomi,
+Claudio Allocchio,
 Laurence Lundblade,
 Ivaylo Petrov,
+Ines Robles,
 Orie Steele,
+Hannes Tschofenig,
+Paul Wouters,
 and
-Hannes Tschofenig
+Peter Yee
 for their valuable contributions to this specification.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1328,51 +1316,64 @@ for their valuable contributions to this specification.<a href="#appendix-A-1" c
       <h2 id="name-document-history">
 <a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
-<p id="appendix-B-1">-06<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-1">-07<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-2.1">Changed requested IANA COSE Header Parameter assignment number from 11 to 13 due to Countersignature being allocated 11.<a href="#appendix-B-2.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B-2.1">Added Privacy Consideration about unencrypted claims in header parameters.<a href="#appendix-B-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="appendix-B-2.2">Reference correct registry IANA COSE Header Parameters.<a href="#appendix-B-2.2" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-B-2.2">Added Security Consideration about detached content.<a href="#appendix-B-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-B-2.3">Added Security Consideration about claims that are present both in the payload and the header of a CWT.<a href="#appendix-B-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-B-2.4">Changed requested IANA COSE Header Parameter assignment number from 13 to 15 due to subsequent assignments of 13 and 14.<a href="#appendix-B-2.4" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-B-2.5">Acknowledged last call reviewers.<a href="#appendix-B-2.5" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-B-3">-05<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">-06<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-4.1">Added Acknowledgements section.<a href="#appendix-B-4.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B-4.1">Changed requested IANA COSE Header Parameter assignment number from 11 to 13 due to Countersignature being allocated 11.<a href="#appendix-B-4.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="appendix-B-4.2">Addressed WGLC feedback.  Specifically...<a href="#appendix-B-4.2" class="pilcrow">¶</a>
-</li>
-        <li class="normal" id="appendix-B-4.3">Added statement about being able to use the header parameter in any COSE object.<a href="#appendix-B-4.3" class="pilcrow">¶</a>
-</li>
-        <li class="normal" id="appendix-B-4.4">Moved statment about verifing that claim values present in both the header and payload are identical from the Security Considerations to the body of the specification.<a href="#appendix-B-4.4" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-B-4.2">Reference correct registry IANA COSE Header Parameters.<a href="#appendix-B-4.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-B-5">-04<a href="#appendix-B-5" class="pilcrow">¶</a></p>
+<p id="appendix-B-5">-05<a href="#appendix-B-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-6.1">Update author affiliation.<a href="#appendix-B-6.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B-6.1">Added Acknowledgements section.<a href="#appendix-B-6.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="appendix-B-6.2">Add standard reference to RFC terminology.<a href="#appendix-B-6.2" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-B-6.2">Addressed WGLC feedback.  Specifically...<a href="#appendix-B-6.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="appendix-B-6.3">Added reference to security considerations from RFC8392.<a href="#appendix-B-6.3" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-B-6.3">Added statement about being able to use the header parameter in any COSE object.<a href="#appendix-B-6.3" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-B-6.4">Moved statment about verifing that claim values present in both the header and payload are identical from the Security Considerations to the body of the specification.<a href="#appendix-B-6.4" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-B-7">-03<a href="#appendix-B-7" class="pilcrow">¶</a></p>
+<p id="appendix-B-7">-04<a href="#appendix-B-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-8.1">Added recommendation around header treatment in protected vs unprotected.<a href="#appendix-B-8.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B-8.1">Update author affiliation.<a href="#appendix-B-8.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-B-8.2">Add standard reference to RFC terminology.<a href="#appendix-B-8.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-B-8.3">Added reference to security considerations from RFC8392.<a href="#appendix-B-8.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-B-9">-02<a href="#appendix-B-9" class="pilcrow">¶</a></p>
+<p id="appendix-B-9">-03<a href="#appendix-B-9" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-10.1">Added CDDL description for CWT claim value.<a href="#appendix-B-10.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B-10.1">Added recommendation around header treatment in protected vs unprotected.<a href="#appendix-B-10.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-B-11">-01<a href="#appendix-B-11" class="pilcrow">¶</a></p>
+<p id="appendix-B-11">-02<a href="#appendix-B-11" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-12.1">Changed example from Key ID to Issuer.<a href="#appendix-B-12.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B-12.1">Added CDDL description for CWT claim value.<a href="#appendix-B-12.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-B-13">-00<a href="#appendix-B-13" class="pilcrow">¶</a></p>
+<p id="appendix-B-13">-01<a href="#appendix-B-13" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-14.1">Created draft-ietf-cose-cwt-claims-in-headers-00 from draft-looker-cose-cwt-claims-in-headers-00 following working group adoption.<a href="#appendix-B-14.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-B-14.1">Changed example from Key ID to Issuer.<a href="#appendix-B-14.1" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="appendix-B-15">-00<a href="#appendix-B-15" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-16.1">Created draft-ietf-cose-cwt-claims-in-headers-00 from draft-looker-cose-cwt-claims-in-headers-00 following working group adoption.<a href="#appendix-B-16.1" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
@@ -1392,7 +1393,7 @@ for their valuable contributions to this specification.<a href="#appendix-A-1" c
 </address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Michael B. Jones</span></div>
-<div dir="auto" class="left"><span class="org">independent</span></div>
+<div dir="auto" class="left"><span class="org">Self-Issued Consulting</span></div>
 <div class="email">
 <span>Email:</span>
 <a href="mailto:michael_b_jones@hotmail.com" class="email">michael_b_jones@hotmail.com</a>
