@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-22T00:20:29.355465+00:00",
+  "timestamp": "2023-10-24T00:19:30.954214+00:00",
   "repo": "tplooker/draft-ietf-cose-cwt-claims-in-headers",
   "labels": [
     {
@@ -619,26 +619,42 @@
       "id": "PR_kwDOGyRGVs5dcymA",
       "title": "Addressed IETF Last Call comments",
       "url": "https://github.com/tplooker/draft-ietf-cose-cwt-claims-in-headers/pull/11",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "selfissued",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Prepares us for the IESG telechat review",
       "createdAt": "2023-10-21T17:23:02Z",
-      "updatedAt": "2023-10-21T17:23:03Z",
+      "updatedAt": "2023-10-23T00:46:21Z",
       "baseRepository": "tplooker/draft-ietf-cose-cwt-claims-in-headers",
       "baseRefName": "main",
       "baseRefOid": "25929a5ad953f7c5add138b71c001dd8b26e4d63",
       "headRepository": "selfissued/draft-ietf-cose-cwt-claims-in-headers",
       "headRefName": "mbj-last-call",
       "headRefOid": "b469e521b3d40f1b1c5d4892cf74be8f89de780b",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2023-10-23T00:46:21Z",
+      "mergedAt": "2023-10-23T00:46:21Z",
+      "mergedBy": "tplooker",
+      "mergeCommit": {
+        "oid": "3f3462b54953a111b317b90ed67acae445c792f1"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOGyRGVs5k0wqr",
+          "commit": {
+            "abbreviatedOid": "b469e52"
+          },
+          "author": "tplooker",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-23T00:46:16Z",
+          "updatedAt": "2023-10-23T00:46:16Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
